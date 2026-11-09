@@ -20,7 +20,7 @@
 <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" media="(min-width: 768px)" href="assets/img/hero-mas-1600.webp" imagesrcset="assets/img/hero-mas-1024.webp 1024w, assets/img/hero-mas-1600.webp 1600w, assets/img/hero-mas-2560.webp 2560w" imagesizes="100vw">
 <link rel="preload" as="image" media="(max-width: 767px)" href="assets/img/hero-mas-m-720.webp" imagesrcset="assets/img/hero-mas-m-720.webp 720w, assets/img/hero-mas-m-1080.webp 1080w" imagesizes="100vw">
-<link rel="stylesheet" href="assets/css/style.css?v=1">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,7 +36,7 @@
   "areaServed": ["Saint-André-de-Majencoules","Le Vigan","Valleraugue","Pont-d'Hérault","Sumène","Ganges","Saint-Hippolyte-du-Fort","Lasalle","Saint-Jean-du-Gard","Aulas","Molières-Cavaillac"]
 }
 </script>
-<script src="assets/js/main.js?v=1" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -159,11 +159,11 @@
       <p class="kicker rv">Avant / après</p>
       <h2 class="h2 rv" id="ba-t">Faites glisser,<br>voyez la différence</h2>
     </header>
-    <div class="ba__tabs rv" role="tablist" aria-label="Choisir un chantier">
-      <button role="tab" aria-selected="true" data-ba="0">Mas en pierre</button>
-      <button role="tab" aria-selected="false" data-ba="1">Mur de soutènement</button>
-      <button role="tab" aria-selected="false" data-ba="2">Terrasse béton</button>
-      <button role="tab" aria-selected="false" data-ba="3">Combles isolés <small>RGE</small></button>
+    <div class="ba__tabs rv" role="group" aria-label="Choisir un chantier">
+      <button aria-pressed="true" data-ba="0">Mas en pierre</button>
+      <button aria-pressed="false" data-ba="1">Mur de soutènement</button>
+      <button aria-pressed="false" data-ba="2">Terrasse béton</button>
+      <button aria-pressed="false" data-ba="3">Combles isolés <small>RGE</small></button>
     </div>
     <div class="ba__stage rv">
       <div class="ba__slider" id="baSlider" style="--pos:50%">
@@ -174,7 +174,7 @@
         <div class="ba__handle" aria-hidden="true"><span><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div>
         <input class="ba__range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Curseur avant / après">
       </div>
-      <p class="ba__cap" id="baCap">Mas cévenol en ruine : murs repris en pierre, toiture en lauzes refaite, menuiseries neuves.</p>
+      <p class="ba__cap" id="baCap" aria-live="polite">Mas cévenol en ruine : murs repris en pierre, toiture en lauzes refaite, menuiseries neuves.</p>
     </div>
   </div>
 </section>
@@ -384,7 +384,7 @@
       </ul>
     </div>
     <form class="form rv" id="form" novalidate>
-      <div class="form__ok" id="formOk" hidden tabindex="-1">
+      <div class="form__ok" id="formOk" hidden tabindex="-1" aria-live="polite">
         <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M14 24.5l7 7 13-14" fill="none" stroke="currentColor" stroke-width="3"/></svg>
         <h3>Merci, c’est bien reçu !</h3>
         <p>Colas vous rappelle rapidement pour parler de votre projet.</p>
@@ -407,7 +407,7 @@
         <label class="fld"><span>Téléphone *</span><input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
       </div>
       <div class="form__row">
-        <label class="fld"><span>Email</span><input name="email" type="email" autocomplete="email" inputmode="email"></label>
+        <label class="fld"><span>Email</span><input name="email" type="email" autocomplete="email" inputmode="email" spellcheck="false"></label>
         <label class="fld"><span>Commune du chantier *</span><input name="commune" list="communes" autocomplete="address-level2" required></label>
         <datalist id="communes"><option>Saint-André-de-Majencoules</option><option>Le Vigan</option><option>Valleraugue</option><option>Pont-d’Hérault</option><option>Sumène</option><option>Ganges</option><option>Saint-Hippolyte-du-Fort</option><option>Lasalle</option><option>Saint-Jean-du-Gard</option><option>Aulas</option><option>Molières-Cavaillac</option></datalist>
       </div>

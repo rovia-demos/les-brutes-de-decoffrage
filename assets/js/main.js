@@ -71,11 +71,11 @@
   slider.addEventListener('pointercancel', end);
   range.addEventListener('input', () => setPos(+range.value));
   // Tabs : préchargement puis échange des images
-  const tabs = $$('.ba__tabs [role="tab"]');
+  const tabs = $$('.ba__tabs button');
   pairs.forEach(p => [p.a, p.b].forEach(n => { const i = new Image(); i.src = `assets/img/${n}-800.webp`; }));
   tabs.forEach(t => t.addEventListener('click', () => {
     const p = pairs[+t.dataset.ba];
-    tabs.forEach(x => x.setAttribute('aria-selected', x === t));
+    tabs.forEach(x => x.setAttribute('aria-pressed', x === t));
     slider.classList.add('is-swap');
     const big = innerWidth > 800 ? 1168 : 800;
     const a = new Image(), b = new Image();
