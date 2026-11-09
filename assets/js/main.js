@@ -99,15 +99,27 @@
 
   // Galerie filtrable
   const fbtns = $$('.filters button'), items = $$('#gal li');
+  const gal = $('#gal'), more = $('#galMore'), moreBtn = $('#galMoreBtn');
+  // Aperçu limité (6 photos sur téléphone, 8 sur ordinateur), le reste derrière « Voir toutes »
+  const limit = () => matchMedia('(max-width: 767px)').matches ? 6 : 8;
+  const applyLimit = () => {
+    let n = 0;
+    items.forEach(li => li.classList.toggle('is-extra', !li.hidden && ++n > limit()));
+    more.hidden = !gal.classList.contains('is-short') || n <= limit();
+  };
+  moreBtn.addEventListener('click', () => { gal.classList.remove('is-short'); more.hidden = true; });
   fbtns.forEach(b => b.addEventListener('click', () => {
     fbtns.forEach(x => { x.classList.toggle('is-on', x === b); x.setAttribute('aria-pressed', x === b); });
     const f = b.dataset.f;
+    gal.classList.add('is-short');
     items.forEach(li => {
       const show = f === 'all' || li.dataset.c === f;
       li.hidden = !show;
       if (show) { li.style.animation = 'none'; li.offsetWidth; li.style.animation = ''; }
     });
+    applyLimit();
   }));
+  applyLimit();
 
   // Visionneuse
   const lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
